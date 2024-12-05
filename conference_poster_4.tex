@@ -1,0 +1,288 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% baposter Landscape Poster
+% LaTeX Template
+% Version 1.0 (11/06/13)
+%
+% baposter Class Created by:
+% Brian Amberg (baposter@brian-amberg.de)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[landscape,a0paper,fontscale=0.285]{baposter} % Adjust the font scale/size here
+
+\usepackage{graphicx} % Required for including images
+\graphicspath{{figures/}} % Directory in which figures are stored
+
+\selectcolormodel{rgb}
+
+\usepackage{amsmath} % For typesetting math
+\usepackage{amssymb} % Adds new symbols to be used in math mode
+
+\usepackage[hyphens]{url}  %% be sure to specify the option 'hyphens'
+\usepackage[pdftex,bookmarksnumbered,hidelinks,breaklinks]{hyperref}
+
+\usepackage{booktabs} % Top and bottom rules for tables
+\usepackage{enumitem} % Used to reduce itemize/enumerate spacing
+\usepackage{palatino} % Use the Palatino font
+\usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
+
+
+\newcommand{\tikzfancyarrow}[2][2cm]{\tikz[baseline=-0.5ex]\node [arrowstyle=#1] {#2};}
+
+\usepackage{multicol} % Required for multiple columns
+\setlength{\columnsep}{1.5em} % Slightly increase the space between columns
+\setlength{\columnseprule}{0mm} % No horizontal rule between columns
+
+\usepackage{tikz} % Required for flow chart
+\usetikzlibrary{fadings,shapes.arrows,shadows}   
+
+\tikzfading[name=arrowfading, top color=transparent!0, bottom color=transparent!95]
+\tikzset{arrowfill/.style={top color=OrangeRed!20, bottom color=Red, general shadow={fill=black, shadow yshift=-0.8ex, path fading=arrowfading}}}
+\tikzset{arrowstyle/.style={draw=FireBrick,arrowfill, single arrow,minimum height=#1, single arrow,
+single arrow head extend=.4cm,}}
+
+\newcommand{\compresslist}{ % Define a command to reduce spacing within itemize/enumerate environments, this is used right after \begin{itemize} or \begin{enumerate}
+\setlength{\itemsep}{1pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+}
+
+\definecolor{lightblue}{rgb}{0.145,0.6666,1} % Defines the color used for content box headers
+\definecolor{MGApurple}{HTML}{633393}
+\definecolor{MGAsilver}{HTML}{c9ced1}
+
+\newcommand{\ds}{\displaystyle}
+\newcommand{\tb}{\textbf}
+\newcommand{\bs}{\boldsymbol}
+
+\begin{document}
+
+\begin{poster}
+{
+headerborder=closed, % Adds a border around the header of content boxes
+colspacing=1em, % Column spacing
+bgColorOne=white, % Background color for the gradient on the left side of the poster
+bgColorTwo=white, % Background color for the gradient on the right side of the poster
+borderColor=MGAsilver, % Border color
+headerColorOne=MGApurple, % Background color for the header in the content boxes (left side)
+headerColorTwo=MGApurple!45, % Background color for the header in the content boxes (right side)
+headerFontColor=white, % Text color for the header text in the content boxes
+boxColorOne=white, % Background color of the content boxes
+textborder=roundedleft, % Format of the border around content boxes, can be: none, bars, coils, triangles, rectangle, rounded, roundedsmall, roundedright or faded
+eyecatcher=true, % Set to false for ignoring the left logo in the title and move the title left
+headerheight=0.1\textheight, % Height of the header
+headershape=roundedright, % Specify the rounded corner in the content box headers, can be: rectangle, small-rounded, roundedright, roundedleft or rounded
+headerfont=\Large\bf\textsc, % Large, bold and sans serif font in the headers of content boxes
+%textfont={\setlength{\parindent}{1.5em}}, % Uncomment for paragraph indentation
+linewidth=2pt % Width of the border lines around content boxes
+}
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION 
+%----------------------------------------------------------------------------------------
+%
+{\includegraphics[height=4em]{logo_purple.png}} % First university/lab logo on the left
+{\bf\textsc{Bayesian Statistics}\vspace{0.5em}} % Poster title
+{\textsc{Camden Jones \hspace{.4cm} Email: camden.jones1@mga.edu}} % Author names and institution
+{\includegraphics[height=4em]{logo_purple.png}} % Second university/lab logo on the right
+
+%------------------------------------------------------------
+% Degree of a Graph
+%------------------------------------------------------------
+
+
+\headerbox{Bayesian vs. Frequentist}{name=max,column=0,row=0}{
+\flushleft{There are \textbf{two} major approaches to statistics: \\ \textcolor{blue}{Frequentist} and \textcolor{green}{Bayesian}}
+\\
+\vspace{.1cm}
+\centering{\underline{\textbf{\textcolor{blue}{Frequentist}}}}
+\begin{itemize}
+    \item Calculates the probability of observing a set of data given a hypothesis
+    \item Parameters are fixed, but unknown
+    \item Does not factor in belief or uncertainties; purely objective rather than subjective
+    \item Procedures are judged by how well they perform over infinite repetitions of all random samples
+\end{itemize}
+\\
+\vspace{.1cm}
+\centering{\underline{\textbf{\textcolor{green}{Bayesian}}}}
+\begin{itemize}
+    \item Calculates the probability of a correct hypothesis given the data observed
+    \item Parameters are considered to be random variables and therefore described with probabilities
+    \item Probability statements used to describe parameters reflect a "degree of belief" and are therefore subjective rather than objective
+    \item Data is used in iteration to revise beliefs about parameters and create a \textbf{posterior distribution}, which incorporates the \textbf{prior distribution} and observed data to assign relative weights to each possible parameter
+\end{itemize}
+}
+
+
+
+
+%----------------------------------------------------------------------------------------
+% Coloring Graphs
+%----------------------------------------------------------------------------------------
+
+\headerbox{History}{name=color,column=0,below=max}{
+\begin{itemize}
+    \item Reverend Thomas Bayes first wrote up Bayes' Theorem in a paper titled \textit{An Essay Towards Solving a Problem in the Doctrine of Chances}.
+    \item  His friend Richard Price discovered the paper after Bayes' death and had it published in 1763 in the \textit{Philosophical Transactions of the Royal Society}.
+    
+\end{itemize}
+
+}
+
+%----------------------------------------------------------------------------------------
+%	Vizing and Friends
+%----------------------------------------------------------------------------------------
+
+
+
+%------------------------------------------------------------
+% Maximum Average Degree
+%------------------------------------------------------------
+\headerbox{Probability Theory}{name=mad, column=1,row=0}{
+\newtheorem{definition}{Definition}
+\begin{definition}
+\textbf{Probability} is the likelihood that an event occurs.
+\end{definition}
+\begin{definition}
+    \textbf{Conditional Probability} is the likelihood that an event occurs given that another event has already occurred, denoted as $P(A|B)$ or "The probability of A given B."
+\end{definition}
+\begin{definition}
+    The process of determining the probability distribution of an unobserved variable (such as a population) is known as \textbf{Inferential Statistics}, while it used to be known as \textbf{Inverse Probability}.
+\end{definition}
+\begin{definition}
+    A \textbf{Prior Distribution} is the assumed probability distribution of an event before any data is taken into account.
+\end{definition}
+\begin{definition}
+    A \textbf{Posterior Distribution} is an event's calculated probability distribution once data is factored in.
+\end{definition}
+\begin{definition}
+    The \textbf{Likelihood Function} is the probability of the observed data given the event occurs, or the inverse of the Posterior Distribution, denoted as $P(B|A)$.
+\end{definition}
+\begin{definition}
+    \textbf{Bayesian Inference} is the use of Bayes' Theorem to update the probability of a hypothesis as more data becomes available.
+\end{definition}
+}
+
+
+%----------------------------------------------------------------------------------------
+%	Main Theorem
+%----------------------------------------------------------------------------------------
+\headerbox{Conditional Probability}{name=main,column=1,below=mad}{
+The formula for \textbf{Conditional Probability} is as follows: \\
+$P(A|B)=\dfrac{P(A\cap B)}{P(B)},$ if $P(B)\neq 0$ \\
+where $P(A\cap B)$ is the probability of both A and B. \\
+\begin{center}
+   \includegraphics[height=3cm]{conditprob.png} 
+\end{center}
+}
+
+%--------------------------------------------
+% List-Edge-Critical
+%--------------------------------------------
+\headerbox{Bayes' Theorem}{name=lec, column=2, row=0}{
+
+Using the inverse probability of $P(A|B)$ and algebraic manipulation yields Bayes' Theorem. \\
+\begin{center}
+    $P(B|A)=\dfrac{P(A\cap B)}{P(A)}$, if $P(A)\neq 0$ \\
+\end{center}
+Solve for $P(A\cap B)$ and substitute into the formula for $P(A|B)$. \\
+\begin{center}
+    $P(A\cap B)= P(B|A)P(A)$ \\
+\end{center}
+
+\begin{center}
+    \large $P(A|B)=\dfrac{P(B|A)P(A)}{P(B)}$, if $P(B)\neq 0$.
+\end{center}
+
+}
+
+
+%--------------------------------------------
+% Contradiction!
+%--------------------------------------------
+\headerbox{An Example}{name=ch, column=2, below=lec}{
+
+The following is a simplified version of the thought experiment that Thomas Bayes used to discover his namesake theorem.\\
+While your back is turned, your friend throws a ball on a table behind you, and you must guess if it landed on the left or right side. You assume that the ball has an equal chance of landing anywhere on the table. You ask your friend to throw another ball on the table and tell you if it landed to the left or to the right of the first ball. You then repeat this process, each time gaining more data. With every new piece of data, you are able to more and more confidently guess whether the first ball is on the left or right side of the table.
+
+}
+
+%--------------------------------------------
+% Lemma 1
+%--------------------------------------------
+\headerbox{With the Numbers}{name=lem1, column=2, below=ch}{
+
+$P(R1)=$ likelihood the 1st ball lands on the right   \\
+$P(R2)=$ likelihood the 2nd ball lands to the right of the 1st\\
+$P(R1)=0.5, P(R2)=0.5, P(R2|R1)=0.25$ \\
+Any ball is equally likely to land on the left or right side, and if we assume the 1st ball is in the center of the right side, that leaves 75\% of the table to its left and  25\% to its right. Given this, we can solve for $P(R2|R1)$. \\
+$P(R1|R2)=\dfrac{P(R2|R1)P(R1)}{P(R2)}$  \\
+$P(R1|R2)=\dfrac{0.25(0.5)}{0.5}=0.25$ 
+
+
+}
+
+
+
+%------------------------------------------------------------
+% Consider This
+%------------------------------------------------------------
+
+\headerbox{Applications}{name=consider,column=3,row=0}{
+\begin{itemize}
+\begin{small}
+    
+
+    \item Bayes' Theorem has been used for calculating loss rates on prospective loans.
+    \item It has also been used to as a new approach for analyzing clinical research results.
+    \item Bayes' Theorem can be used for AI learning models, improving search engines.
+    \end{small}
+\end{itemize}
+}
+
+%----------------------------------------------------------------------------------------
+%	REFERENCES
+%----------------------------------------------------------------------------------------
+
+
+\headerbox{References}{name=bib,column=3,below=consider}{
+\normalsize
+\renewcommand{\section}[2]{}%
+\begin{thebibliography}{00}
+\bibitem{I}
+Introna, M., van den Berg, J. P., Eleveld, D. J., \& Struys, M. M. R. F. (2022). Bayesian statistics in anesthesia practice: a tutorial for anesthesiologists. \emph{Journal of Anesthesia}, \textbf{36(2)}, 294–302. https://doi.org/10.1007/s00540-022-03044-9
+
+\bibitem{Y}
+Yang, Tao et al. “Mitigating Exploitation Bias in Learning to Rank with an Uncertainty-aware Empirical Bayes Approach.” ArXiv abs/2305.16606 (2023): n. pag.
+
+\bibitem{B}
+Bijak, K., \& Thomas, L. C. (2015). Modelling LGD for unsecured retail loans using Bayesian methods. \emph{Journal of the Operational Research Society}, \textbf{66(2)}, 342-352.
+
+\bibitem{Z}
+ Zampieri, F. G., Damiani, L. P., Bakker, J., Ospina-Tascón, G. A., Castro, R., Cavalcanti, A. B., \& Hernandez, G. (2020). Effects of a Resuscitation Strategy Targeting Peripheral Perfusion Status versus Serum Lactate Levels among Patients with Septic Shock. A Bayesian Reanalysis of the ANDROMEDA-SHOCK Trial. \emph{American journal of respiratory and critical care medicine}, \textbf{201(4)}, 423–429. https://doi.org/10.1164/rccm.201905-0968OC
+
+\bibitem{BMC}
+Bolstad, W. M., \& Curran, J. M. (2017). \emph{Introduction to Bayesian statistics} (Third edition.). Wiley. 1-8.
+
+\bibitem{W}
+Wijeysundera, D. N., Austin, P. C., Hux, J. E., Beattie, W. S., \& Laupacis, A. (2009). Bayesian statistical inference enhances the interpretation of contemporary randomized controlled trials. \emph{Journal of clinical epidemiology}, \textbf{62(1)}, 13–21.e5. https://doi.org/10.1016/j.jclinepi.2008.07.006
+
+\end{thebibliography}
+
+}
+
+
+
+
+\end{poster}
+
+\end{document}

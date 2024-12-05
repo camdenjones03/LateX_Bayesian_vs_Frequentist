@@ -1,0 +1,196 @@
+\documentclass[article]{beamer}
+\usetheme{Madrid} %minimalist theme that doesn't distract from slides
+\usecolortheme{seahorse} %light shade of blue
+\setbeamertemplate{footline}[frame number]
+
+%Add packages if needed
+\usefonttheme[]{serif}
+\usepackage{soul}
+\usepackage{amsmath, latexsym, color, graphicx, amssymb, bm, here}
+\usepackage{epsf, epsfig, pifont,tikz,subfigure}
+\usepackage{graphics, calrsfs}
+\usepackage{times}
+\usepackage{fancybox,calc}
+\usepackage{palatino,mathpazo}
+\usepackage{amsfonts}
+\usepackage{sidecap}
+\usepackage{multirow}
+\usepackage{multicol}
+%--------------------------------------------------
+% Title, Author, Email
+%--------------------------------------------------
+\title{Bayesian Statistics}
+\author{Camden Jones \newline {\footnotesize}}
+\institute{Middle Georgia State University \newline Email: camden.jones1@mga.edu \vspace{.2cm}}
+\date{\scriptsize{Math 3207 Final Presentation}}
+
+
+\AtBeginSection[]
+{
+%  \begin{frame}
+  %\tableofcontents[currentsection]
+% \end{frame}
+ }
+  
+
+
+\begin{document}
+
+\maketitle
+
+%\begin{frame}           % Frames are Slides in Latex
+%\frametitle{Contents}   % Include contents when you have a few sections
+%\tableofcontents
+%\end{frame}
+
+\section{Introduction}  % First section of slides
+
+\begin{frame}{fragile}
+\frametitle{Statistics and Probability}
+\begin{itemize}
+    \item What is \textbf{Statistics}?
+    \vspace{1cm}
+    \begin{enumerate}
+        \item Parameters
+        \vspace{0.5cm}
+        \item Hypotheses
+        \vspace{0.5cm}
+        \item Probability
+    \end{enumerate}
+    \vspace{1cm}
+    \item Two major approaches: \textbf{\textcolor{blue}{Frequentist}} and \textbf{\textcolor{green}{Bayesian}}
+\end{itemize}    
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Frequentist vs. Bayesian} %Affects only title
+\resizebox{\textwidth}{!}{%
+    \begin{tabular}{|c|c|}
+    \hline
+       \textbf{\textcolor{blue}{Frequentist}}  & \textbf{\textcolor{green}{Bayesian}} \\ \hline
+       $ \text{Hypothesis} \rightarrow \text{Data Observed}$ & $\text{Data Observed} \rightarrow \text{Hypothesis}$ \\
+       \hline
+       Parameters are fixed & Parameters are random variables\\ \hline
+       No belief or uncertainties & Update beliefs with new data \\ \hline
+    \end{tabular} }
+    \label{tab:my_label}
+\includegraphics[height=3.5cm]{normal.png} \hspace{.2 cm}
+\includegraphics[height=3cm]{joker.png}
+%\hspace{0.4cm}  \textbf{Edge Coloring}: $\chi'(G)=2$ \hspace{0.8cm} \textbf{List-Edge Coloring}: $\chi'_\ell(G)=2$
+%\begin{figure}
+%\centering
+%\includegraphics[height=8cm]{list.png}
+%\end{figure}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{History}
+
+\begin{block}{Discovery}  % Use block for important theorems
+Reverend Thomas Bayes - An Essay Towards Solving a Problem in the Doctrine of Chances
+\end{block}
+
+\begin{block}{Proliferation}
+Found by Bayes' friend Richard Price after his death, who had it published in 1763.
+\end{block}
+\vspace{.4cm}
+
+%\begin{center}
+%\def\arraystretch{1.5}
+%\begin{tabular}{c|c|c}
+ %    \hline
+  %   Author & Given & Implication  \\
+   %  \hline
+    % Galvin & Bipartite & $\chi'(G)=\chi'_\ell(G)$\\
+     %Cohen \& Havet & Planar \& $\Delta\geq 9$ & $\chi'_\ell(G)\leq\Delta+1$\\
+%\end{tabular}
+%\end{center}
+
+\end{frame}
+
+\begin{frame}{Important Definitions}
+
+\begin{enumerate}
+    \item Conditional Probability
+    \begin{itemize}
+        \item $P(A|B)$
+    \end{itemize}
+    \item Probability Distribution \\
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+    \hline
+       $X$  & 1 & 2 & 3 & 4 & 5 & 6   \\
+       \hline
+       $P(X)$ &  $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$  & $\frac{1}{6}$ \\
+       \hline
+    \end{tabular}
+    \item Prior Distribution
+    \begin{itemize}
+        \item $P(A)$
+    \end{itemize}
+    \item Posterior Distribution
+    \begin{itemize}
+        \item $P(A|B)$
+    \end{itemize}
+    \item Likelihood Function
+    \begin{itemize}
+        \item $P(B|A)$
+    \end{itemize}
+\end{enumerate}
+\end{frame}
+\section{Theorem}  % New Section
+\begin{frame}{Conditional Probability}
+\begin{center}
+$P(A|B)=\dfrac{P(A\cap B)}{P(B)},$ if $P(B)\neq 0$ \\
+where $P(A\cap B)$ is the probability of both A and B. \\
+\vspace{1cm}
+$P(B|A)=\dfrac{P(A\cap B)}{P(A)}$, if $P(A)\neq 0$ \\
+\vspace{1cm}
+    $P(A\cap B)= P(B|A)P(A)$ \\
+\vspace{1cm}
+    \large $P(A|B)=\dfrac{P(B|A)P(A)}{P(B)}$, if $P(B)\neq 0$.
+\end{center}
+\end{frame}
+\begin{frame}{Theorem}
+
+\begin{block}{Bayes' Theorem}
+$P(A|B) = \frac{P(B|A)P(A)}{P(B)}$
+\end{block}
+
+\end{frame}
+
+\begin{frame}{An Example}
+\begin{center}
+\includegraphics[height=3cm]{first.png} 
+\includegraphics[height=3cm]{left.png} \\
+$P(R_1)=$ likelihood the 1st ball lands on the right   \\
+$P(R_2)=$ likelihood the 2nd ball lands to the right of the 1st\\
+Assumptions: $P(R_1)=0.5$, $P(R_2)=0.5$, $P(R_2|R_1)=0.25$\\
+\vspace{1 cm}
+
+ $P(R_1|R_2)=\dfrac{P(R_2|R_1)P(R_1)}{P(R_2)} =\dfrac{0.25(0.5)}{0.5}=0.25$ 
+\end{center}
+\end{frame}
+
+\begin{frame}{Prominent Uses}
+\begin{center}
+\begin{itemize}
+    \item Finance: Predicting lending risks (Bijak et al.).
+    \item Medical Research: New way to analyze drug trials (Wijeysundera et al.).
+    \item Artificial Intelligence: Improving search engines by eliminating bias (Yang et al.).
+\end{itemize}
+\end{center}
+
+\end{frame}
+
+\section{Conclusion}
+
+
+\begin{frame}{}
+   \begin{center}
+     \Huge{Thank You!}
+   \end{center}
+\end{frame}
+\end{document}
